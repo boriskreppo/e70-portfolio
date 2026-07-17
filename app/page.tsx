@@ -59,11 +59,11 @@ export default function HomePage() {
         </div>
 
         {/* Dashboard mockup */}
-        <div className="relative z-10 w-full max-w-4xl mx-auto mt-16 px-6" style={{ isolation: 'isolate' }}>
-          <div className="rounded-t-xl overflow-hidden border border-white/10 border-b-0"
+        <div className="relative z-10 w-full max-w-4xl mx-auto mt-16 px-6">
+          <div className="rounded-t-xl border border-white/10 border-b-0 relative"
             style={{ boxShadow: '0 -8px 80px rgba(255,82,0,0.13), 0 0 0 1px rgba(255,255,255,0.04)' }}>
             {/* chrome bar */}
-            <div className="flex items-center gap-3 px-4 h-10 border-b border-white/7"
+            <div className="flex items-center gap-3 px-4 h-10 border-b border-white/7 rounded-t-xl"
               style={{ background: 'rgba(20,22,28,1)' }}>
               <div className="flex gap-1.5">
                 <span className="w-2.5 h-2.5 rounded-full" style={{ background: 'rgba(255,95,86,0.7)' }} />
@@ -76,25 +76,26 @@ export default function HomePage() {
                 </span>
               </div>
             </div>
-            <Image src="/dashboard.png" alt="e70Solutions Dashboard" width={1200} height={680} className="w-full" priority />
-          </div>
-
-          {/* LaserFlow — base sits on top edge of dashboard, shoots upward */}
-          <div className="absolute pointer-events-none"
-            style={{ right: '15%', top: 0, width: '480px', height: '900px', zIndex: 2, transform: 'translate(50%, -100%)' }}>
-            <LaserFlow
-              color="#ff5200"
-              horizontalBeamOffset={0.0}
-              verticalBeamOffset={0.0}
-              verticalSizing={2.2}
-              horizontalSizing={1.4}
-              fogIntensity={0.55}
-              wispIntensity={5.0}
-              wispDensity={1}
-              flowStrength={0.28}
-              decay={1.2}
-              falloffStart={1.4}
-            />
+            <div className="overflow-hidden">
+              <Image src="/dashboard.png" alt="e70Solutions Dashboard" width={1200} height={680} className="w-full" priority />
+            </div>
+            {/* LaserFlow — inside dashboard, right side, shoots from top edge upward */}
+            <div className="absolute pointer-events-none"
+              style={{ right: 0, top: '40px', width: '500px', height: '500px', zIndex: 4, transform: 'translateY(-100%)' }}>
+              <LaserFlow
+                color="#ff5200"
+                horizontalBeamOffset={0.0}
+                verticalBeamOffset={0.0}
+                verticalSizing={1.6}
+                horizontalSizing={0.6}
+                fogIntensity={0.4}
+                wispIntensity={3.0}
+                wispDensity={1}
+                flowStrength={0.25}
+                decay={1.1}
+                falloffStart={1.2}
+              />
+            </div>
           </div>
         </div>
 
