@@ -82,7 +82,7 @@ export default function HomePage() {
 
             {/* LaserFlow — top:0 centers canvas vertically on dashboard top edge (beam origin = canvas center), right:0 + translateX(50%) on right edge */}
             <div className="absolute pointer-events-none"
-              style={{ top: 0, right: 0, width: '440px', height: '500px', zIndex: 5, transform: 'translate(50%, -50%)' }}>
+              style={{ top: 0, right: 0, width: '440px', height: '900px', zIndex: 5, transform: 'translate(50%, -50%)' }}>
               <LaserFlow
                 color="#ff5200"
                 horizontalBeamOffset={0.0}
