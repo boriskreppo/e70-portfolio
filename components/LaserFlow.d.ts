@@ -1,27 +1,27 @@
-declare module './LaserFlow' {
-  export interface LaserFlowProps {
-    className?: string;
-    style?: React.CSSProperties;
-    wispDensity?: number;
-    dpr?: number;
-    mouseSmoothTime?: number;
-    mouseTiltStrength?: number;
-    horizontalBeamOffset?: number;
-    verticalBeamOffset?: number;
-    flowSpeed?: number;
-    verticalSizing?: number;
-    horizontalSizing?: number;
-    fogIntensity?: number;
-    fogScale?: number;
-    wispSpeed?: number;
-    wispIntensity?: number;
-    flowStrength?: number;
-    decay?: number;
-    falloffStart?: number;
-    fogFallSpeed?: number;
-    color?: string;
-  }
+import React from 'react';
 
-  export const LaserFlow: React.FC<LaserFlowProps>;
-  export default LaserFlow;
+export interface LaserFlowProps {
+  className?: string;
+  style?: React.CSSProperties;
+  wispDensity?: number;
+  dpr?: number;
+  mouseSmoothTime?: number;
+  mouseTiltStrength?: number;
+  horizontalBeamOffset?: number;
+  verticalBeamOffset?: number;
+  flowSpeed?: number;
+  verticalSizing?: number;
+  horizontalSizing?: number;
+  fogIntensity?: number;
+  fogScale?: number;
+  wispSpeed?: number;
+  wispIntensity?: number;
+  flowStrength?: number;
+  decay?: number;
+  falloffStart?: number;
+  fogFallSpeed?: number;
+  color?: string;
 }
+
+export const LaserFlow: React.FC<LaserFlowProps>;
+export default LaserFlow;
