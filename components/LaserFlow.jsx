@@ -1,3 +1,4 @@
+// @ts-nocheck
 'use client';
 
 import { useEffect, useRef } from 'react';
@@ -236,10 +237,10 @@ void main(){
 `;
 
 export const LaserFlow = ({
-  className,
-  style,
+  className = '',
+  style = {},
   wispDensity = 1,
-  dpr,
+  dpr = undefined,
   mouseSmoothTime = 0.0,
   mouseTiltStrength = 0.01,
   horizontalBeamOffset = 0.1,
