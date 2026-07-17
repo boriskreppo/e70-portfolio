@@ -80,24 +80,25 @@ export default function HomePage() {
               <Image src="/dashboard.png" alt="e70Solutions Dashboard" width={1200} height={680} className="w-full" priority />
             </div>
 
-            {/* LaserFlow — top:0 centers canvas vertically on dashboard top edge (beam origin = canvas center), right:0 + translateX(50%) on right edge */}
-            <div className="absolute pointer-events-none"
-              style={{ top: 0, right: '64px', width: '440px', height: '900px', zIndex: 5, transform: 'translate(50%, -50%)' }}>
-              <LaserFlow
-                color="#ff5200"
-                horizontalBeamOffset={0.0}
-                verticalBeamOffset={0.0}
-                verticalSizing={1.8}
-                horizontalSizing={0.55}
-                fogIntensity={0.45}
-                wispIntensity={3.5}
-                wispDensity={1}
-                flowStrength={0.25}
-                decay={1.1}
-                falloffStart={1.3}
-              />
-            </div>
           </div>
+        </div>
+
+        {/* LaserFlow — absolute in hero section, top:0 to bottom of dashboard, beam origin pushed to bottom via verticalBeamOffset */}
+        <div className="absolute pointer-events-none"
+          style={{ top: 0, right: 'calc(50% - 672px + 64px)', width: '440px', height: '100%', zIndex: 3 }}>
+          <LaserFlow
+            color="#ff5200"
+            horizontalBeamOffset={0.0}
+            verticalBeamOffset={0.42}
+            verticalSizing={1.8}
+            horizontalSizing={0.55}
+            fogIntensity={0.45}
+            wispIntensity={3.5}
+            wispDensity={1}
+            flowStrength={0.25}
+            decay={1.1}
+            falloffStart={1.3}
+          />
         </div>
 
         <div className="absolute bottom-0 left-0 right-0 h-32 pointer-events-none"
