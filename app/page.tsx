@@ -80,9 +80,9 @@ export default function HomePage() {
               <Image src="/dashboard.png" alt="e70Solutions Dashboard" width={1200} height={680} className="w-full" priority />
             </div>
 
-            {/* LaserFlow — top:0 right:0 snaps to top-right corner of this relative div, translateY(-100%) shoots upward, translateX(50%) centers canvas on the edge */}
+            {/* LaserFlow — bottom:100% = sits just above dashboard top edge, right:0 + translateX(50%) centers on right edge */}
             <div className="absolute pointer-events-none"
-              style={{ top: 0, right: 0, width: '440px', height: '500px', zIndex: 5, transform: 'translate(50%, -100%)' }}>
+              style={{ bottom: '100%', right: 0, width: '440px', height: '500px', zIndex: 5, transform: 'translateX(50%)' }}>
               <LaserFlow
                 color="#ff5200"
                 horizontalBeamOffset={0.0}
