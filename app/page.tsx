@@ -2,6 +2,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import HeroParticles from '@/components/HeroParticles';
 import LaserFlow from '@/components/LaserFlow';
+import SpecularButton from '@/components/SpecularButton';
 import ProductCard from '@/components/ProductCard';
 import { products } from '@/lib/products';
 
@@ -15,7 +16,7 @@ export default function HomePage() {
   return (
     <>
       {/* ── HERO ── */}
-      <section className="relative min-h-screen flex flex-col items-center pt-16 pb-0 overflow-hidden text-center"
+      <section className="relative min-h-screen flex flex-col items-center pt-16 pb-0 text-center"
         style={{ background: 'var(--color-void)' }}>
 
         <HeroParticles />
@@ -45,23 +46,71 @@ export default function HomePage() {
           </p>
 
           <div className="flex items-center gap-3 flex-wrap justify-center">
-            <Link href="#view-ecosystem"
-              className="inline-flex items-center gap-2 px-7 py-3.5 rounded-xl text-sm font-semibold transition-all"
-              style={{ background: 'linear-gradient(135deg,#ff5200,#ff8040)', color: '#fff' }}>
-              Pogledaj proizvode
+            <Link href="#view-ecosystem">
+              <SpecularButton
+                size="md"
+                radius={14}
+                tint="#ff5200"
+                tintOpacity={0.9}
+                textColor="#ffffff"
+                lineColor="#ffaa80"
+                baseColor="#ff5200"
+                intensity={1.2}
+                shineSize={12}
+                shineFade={35}
+                proximity={200}
+              >
+                Pogledaj proizvode
+              </SpecularButton>
             </Link>
-            <a href="mailto:hello@e70.solutions"
-              className="inline-flex items-center gap-2 px-7 py-3.5 rounded-xl text-sm font-semibold border transition-all"
-              style={{ border: '1px solid rgba(255,255,255,0.14)', color: 'rgba(255,255,255,0.7)' }}>
-              Kontaktiraj nas
+            <a href="mailto:hello@e70.solutions">
+              <SpecularButton
+                size="md"
+                radius={14}
+                tint="#ffffff"
+                tintOpacity={0.04}
+                textColor="rgba(255,255,255,0.75)"
+                lineColor="#ffffff"
+                baseColor="#444444"
+                intensity={0.9}
+                shineSize={12}
+                shineFade={35}
+                proximity={200}
+              >
+                Kontaktiraj nas
+              </SpecularButton>
             </a>
           </div>
         </div>
 
+        {/* LaserFlow: from top:0 to mockup top edge, beam impact at bottom of container */}
+        <div className="absolute pointer-events-none" style={{
+          top: 0,
+          height: '1011px',
+          right: 'calc(50% - 448px - 16px)',
+          width: '400px',
+          zIndex: 2,
+        }}>
+          <LaserFlow
+            color="#ff5200"
+            horizontalBeamOffset={0.0}
+            verticalBeamOffset={0.0}
+            verticalSizing={3.5}
+            horizontalSizing={0.6}
+            fogIntensity={0.7}
+            wispIntensity={6.0}
+            wispDensity={1.2}
+            flowStrength={0.35}
+            decay={1.3}
+            falloffStart={1.5}
+          />
+        </div>
+
         {/* Dashboard mockup */}
         <div className="relative z-10 w-full max-w-4xl mx-auto mt-16 px-6">
-          <div className="rounded-t-xl border border-white/10 border-b-0 relative"
-            style={{ boxShadow: '0 -8px 80px rgba(255,82,0,0.13), 0 0 0 1px rgba(255,255,255,0.04)' }}>
+
+          <div className="rounded-t-xl border border-white/10 border-b-0 relative" style={{ zIndex: 2,
+            boxShadow: '0 -8px 80px rgba(255,82,0,0.13), 0 0 0 1px rgba(255,255,255,0.04)' }}>
             {/* chrome bar */}
             <div className="flex items-center gap-3 px-4 h-10 border-b border-white/7"
               style={{ background: 'rgba(20,22,28,1)' }}>
@@ -79,26 +128,8 @@ export default function HomePage() {
             <div className="overflow-hidden">
               <Image src="/dashboard.png" alt="e70Solutions Dashboard" width={1200} height={680} className="w-full" priority />
             </div>
-
           </div>
-        </div>
 
-        {/* LaserFlow — absolute in hero section, top:0 to bottom of dashboard, beam origin pushed to bottom via verticalBeamOffset */}
-        <div className="absolute pointer-events-none"
-          style={{ top: 0, right: 'calc(50% - 672px + 64px)', width: '440px', height: '100%', zIndex: 3 }}>
-          <LaserFlow
-            color="#ff5200"
-            horizontalBeamOffset={0.0}
-            verticalBeamOffset={0.42}
-            verticalSizing={1.8}
-            horizontalSizing={0.55}
-            fogIntensity={0.45}
-            wispIntensity={3.5}
-            wispDensity={1}
-            flowStrength={0.25}
-            decay={1.1}
-            falloffStart={1.3}
-          />
         </div>
 
         <div className="absolute bottom-0 left-0 right-0 h-32 pointer-events-none"
