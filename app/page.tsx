@@ -4,6 +4,7 @@ import HeroParticles from '@/components/HeroParticles';
 import LaserFlow from '@/components/LaserFlow';
 import SpecularButton from '@/components/SpecularButton';
 import ProductCard from '@/components/ProductCard';
+import ShapeBlur from '@/components/ShapeBlur';
 import { products } from '@/lib/products';
 
 const viewEco  = products.filter(p => p.segment === 'view-ecosystem');
@@ -195,6 +196,45 @@ export default function HomePage() {
               </div>
             </div>
           </div>
+        </div>
+      </section>
+      {/* ── GET IN TOUCH ── */}
+      <section className="relative py-32 border-t border-white/5 overflow-hidden"
+        style={{ background: '#0e1014' }}>
+        <div className="absolute inset-0 pointer-events-none">
+          <ShapeBlur
+            variation={0}
+            shapeSize={0.6}
+            roundness={0.5}
+            borderSize={0.04}
+            circleSize={0.35}
+            circleEdge={0.8}
+          />
+        </div>
+        <div className="relative z-10 max-w-2xl mx-auto px-10 text-center">
+          <h2 className="text-4xl font-extrabold tracking-tight text-white mb-4">
+            Hajde da razgovaramo
+          </h2>
+          <p className="text-base leading-relaxed mb-10" style={{ color: 'rgba(250,250,250,0.45)' }}>
+            Imate projekat na umu? Pišite nam i zajedno ćemo pronaći pravo rešenje.
+          </p>
+          <a href="mailto:hello@e70.solutions">
+            <SpecularButton
+              size="lg"
+              radius={16}
+              tint="#ff5200"
+              tintOpacity={0.9}
+              textColor="#ffffff"
+              lineColor="#ffaa80"
+              baseColor="#ff5200"
+              intensity={1.3}
+              shineSize={12}
+              shineFade={35}
+              proximity={250}
+            >
+              Kontaktiraj nas
+            </SpecularButton>
+          </a>
         </div>
       </section>
     </>
