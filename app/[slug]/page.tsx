@@ -2,6 +2,7 @@ import { notFound } from 'next/navigation';
 import Image from 'next/image';
 import Link from 'next/link';
 import BorderGlow from '@/components/BorderGlow';
+import ProductCTA from '@/components/ProductCTA';
 import { getProductBySlug, products } from '@/lib/products';
 
 export function generateStaticParams() {
@@ -200,29 +201,9 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
       </section>
 
       {/* ── CTA ── */}
-      <section className="py-20 border-t border-white/5" style={{ background: 'var(--color-carbon)' }}>
+      <section className="py-20 border-t border-white/5 overflow-hidden" style={{ background: '#0b0c10' }}>
         <div className="max-w-4xl mx-auto px-10">
-          <BorderGlow
-            backgroundColor="#13151a"
-            borderRadius={20}
-            glowColor="20 80 70"
-            glowIntensity={1.0}
-            colors={['rgba(255,82,0,0.18)','rgba(255,120,0,0.09)','rgba(180,40,0,0.07)']}
-            fillOpacity={0.45}
-            animated
-          >
-            <div className="p-14 text-center relative">
-              <div className="absolute top-0 left-1/2 -translate-x-1/2 w-1/2 h-px"
-                style={{ background: 'linear-gradient(90deg, transparent, rgba(255,82,0,0.6), transparent)' }} />
-              <h2 className="text-3xl font-semibold tracking-tight text-white mb-3">{p.ctaText}</h2>
-              <p className="mb-8" style={{ color: 'rgba(250,250,250,0.45)' }}>{p.ctaNote}</p>
-              <a href="mailto:hello@e70.solutions"
-                className="inline-flex items-center gap-2 px-8 py-4 rounded-xl text-sm font-semibold"
-                style={{ background: 'linear-gradient(135deg,#ff5200,#ff8040)', color: '#fff' }}>
-                {p.ctaText}
-              </a>
-            </div>
-          </BorderGlow>
+          <ProductCTA ctaText={p.ctaText} ctaNote={p.ctaNote} />
         </div>
       </section>
     </>

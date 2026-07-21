@@ -3,8 +3,8 @@ import Link from 'next/link';
 import HeroParticles from '@/components/HeroParticles';
 import LaserFlow from '@/components/LaserFlow';
 import SpecularButton from '@/components/SpecularButton';
-import ProductCard from '@/components/ProductCard';
 import ShapeBlur from '@/components/ShapeBlur';
+import ProductCard from '@/components/ProductCard';
 import { products } from '@/lib/products';
 
 const viewEco  = products.filter(p => p.segment === 'view-ecosystem');
@@ -200,18 +200,9 @@ export default function HomePage() {
       </section>
       {/* ── GET IN TOUCH ── */}
       <section className="relative py-32 border-t border-white/5 overflow-hidden"
-        style={{ background: '#0e1014' }}>
-        <div className="absolute inset-0 pointer-events-none">
-          <ShapeBlur
-            variation={0}
-            shapeSize={0.6}
-            roundness={0.5}
-            borderSize={0.04}
-            circleSize={0.35}
-            circleEdge={0.8}
-          />
-        </div>
-        <div className="relative z-10 max-w-2xl mx-auto px-10 text-center">
+        style={{ background: '#0b0c10' }}>
+
+<div className="relative z-10 max-w-2xl mx-auto px-10 text-center">
           <h2 className="text-4xl font-extrabold tracking-tight text-white mb-4">
             Hajde da razgovaramo
           </h2>
@@ -235,6 +226,26 @@ export default function HomePage() {
               Kontaktiraj nas
             </SpecularButton>
           </a>
+
+        </div>
+
+        {/* ShapeBlur centered in section */}
+        <div className="absolute shape-blur-reveal" style={{
+          width: '960px', height: '960px',
+          top: '50%', left: '50%',
+          transform: 'translate(-50%, -50%)',
+          pointerEvents: 'none',
+          zIndex: 0,
+          opacity: 0.85,
+        }}>
+          <ShapeBlur
+            variation={2}
+            shapeSize={0.85}
+            roundness={0.5}
+            borderSize={0.14}
+            circleSize={0.35}
+            circleEdge={0.8}
+          />
         </div>
       </section>
     </>

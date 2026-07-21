@@ -53,6 +53,15 @@ body::before {
 }
 
 
+/* ── ShapeBlur inverse reveal ── */
+.shape-blur-reveal {
+  filter: blur(12px);
+  transition: filter 0.5s ease;
+}
+.shape-blur-reveal:hover {
+  filter: blur(0px);
+}
+
 /* ── Ticker animation ── */
 @keyframes ticker-scroll {
   from { transform: translateX(0); }
