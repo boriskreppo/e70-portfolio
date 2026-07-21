@@ -11,12 +11,6 @@ const CARD_COLORS: Record<string, string[]> = {
   flow:             ['rgba(86,131,218,0.18)','rgba(60,100,200,0.09)','rgba(30,60,160,0.06)'],
 };
 
-// hueShift per segment: 0 = default purple/blue, shift toward orange/red for warm segments
-const VEIL_HUE: Record<string, number> = {
-  'view-ecosystem': -120,
-  fueltrack:        -90,
-  flow:             0,
-};
 
 export default function ProductCard({ p, animated }: { p: typeof products[0]; animated?: boolean }) {
   return (
@@ -31,8 +25,15 @@ export default function ProductCard({ p, animated }: { p: typeof products[0]; an
       animated={animated}
     >
       <div className="p-8 flex flex-col h-full min-h-[220px] relative overflow-hidden">
-        <div className="absolute inset-0 pointer-events-none" style={{ opacity: 0.45, zIndex: 0, width: '100%', height: '100%' }}>
-          <DarkVeil hueShift={VEIL_HUE[p.segment] ?? 0} speed={1.2} warpAmount={0.3} resolutionScale={0.4} />
+        <div className="absolute inset-0 pointer-events-none" style={{
+          zIndex: 0,
+          width: '100%',
+          height: '100%',
+          opacity: 0.7,
+          WebkitMaskImage: 'radial-gradient(ellipse 85% 80% at 100% 100%, black 30%, transparent 75%)',
+          maskImage: 'radial-gradient(ellipse 85% 80% at 100% 100%, black 30%, transparent 75%)',
+        }}>
+          <DarkVeil hueShift={-125} speed={1.2} warpAmount={0.3} resolutionScale={0.4} />
         </div>
         {p.segment === 'view-ecosystem' && (
           <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold mb-4 w-fit relative z-10"
