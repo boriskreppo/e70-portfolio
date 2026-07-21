@@ -117,14 +117,17 @@ export default function DarkVeil({
     const mesh = new Mesh(gl, { geometry, program });
 
     const resize = () => {
-      const w = parent.clientWidth;
-      const h = parent.clientHeight;
+      const w = parent.clientWidth || parent.offsetWidth || 300;
+      const h = parent.clientHeight || parent.offsetHeight || 200;
       renderer.setSize(w * resolutionScale, h * resolutionScale);
       program.uniforms.uResolution.value.set(w, h);
     };
 
+    const ro = new ResizeObserver(resize);
+    ro.observe(parent);
     window.addEventListener('resize', resize);
-    resize();
+    // Defer first resize to ensure layout is complete
+    requestAnimationFrame(resize);
 
     const start = performance.now();
     let frame = 0;
@@ -144,6 +147,7 @@ export default function DarkVeil({
 
     return () => {
       cancelAnimationFrame(frame);
+      ro.disconnect();
       window.removeEventListener('resize', resize);
     };
   }, [hueShift, noiseIntensity, scanlineIntensity, speed, scanlineFrequency, warpAmount, resolutionScale]);
