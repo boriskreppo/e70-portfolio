@@ -90,7 +90,6 @@ export default function DarkVeil({
 
   useEffect(() => {
     const canvas = ref.current;
-    const parent = canvas.parentElement;
 
     const renderer = new Renderer({
       dpr: Math.min(window.devicePixelRatio, 2),
@@ -116,17 +115,29 @@ export default function DarkVeil({
 
     const mesh = new Mesh(gl, { geometry, program });
 
+    const getSize = () => {
+      // Walk up until we find an element with actual dimensions
+      let el = canvas;
+      while (el) {
+        if (el.clientWidth > 0 && el.clientHeight > 0) {
+          return { w: el.clientWidth, h: el.clientHeight };
+        }
+        el = el.parentElement;
+      }
+      return { w: 300, h: 200 };
+    };
+
     const resize = () => {
-      const w = parent.clientWidth || parent.offsetWidth || 300;
-      const h = parent.clientHeight || parent.offsetHeight || 200;
+      const { w, h } = getSize();
       renderer.setSize(w * resolutionScale, h * resolutionScale);
+      canvas.style.width = '100%';
+      canvas.style.height = '100%';
       program.uniforms.uResolution.value.set(w, h);
     };
 
     const ro = new ResizeObserver(resize);
-    ro.observe(parent);
+    ro.observe(canvas.parentElement);
     window.addEventListener('resize', resize);
-    // Defer first resize to ensure layout is complete
     requestAnimationFrame(resize);
 
     const start = performance.now();
