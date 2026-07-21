@@ -2,7 +2,6 @@
 
 import Link from 'next/link';
 import BorderGlow from './BorderGlow';
-import DarkVeil from './DarkVeil';
 import { products } from '@/lib/products';
 
 const CARD_COLORS: Record<string, string[]> = {
@@ -24,34 +23,20 @@ export default function ProductCard({ p, animated }: { p: typeof products[0]; an
       fillOpacity={0.38}
       animated={animated}
     >
-      <div style={{ position: 'relative', flex: 1, minHeight: '220px', overflow: 'hidden' }}>
-        {/* DarkVeil background */}
-        <div style={{
-          position: 'absolute',
-          inset: 0,
-          pointerEvents: 'none',
-          opacity: 0.75,
-          WebkitMaskImage: 'radial-gradient(ellipse 90% 85% at 100% 100%, black 25%, transparent 70%)',
-          maskImage: 'radial-gradient(ellipse 90% 85% at 100% 100%, black 25%, transparent 70%)',
-        }}>
-          <DarkVeil hueShift={-125} speed={1.2} warpAmount={0.3} resolutionScale={0.4} />
-        </div>
-        {/* Content */}
-        <div className="p-8 flex flex-col h-full relative" style={{ zIndex: 1 }}>
-          {p.segment === 'view-ecosystem' && (
-            <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold mb-4 w-fit"
-              style={{ background: 'rgba(255,82,0,0.12)', color: '#ff8040', border: '1px solid rgba(255,82,0,0.2)' }}>
-              View Ecosystem
-            </span>
-          )}
-          <h3 className="text-xl font-semibold tracking-tight text-white mb-2">{p.name}</h3>
-          <p className="text-sm leading-relaxed mb-6 flex-1" style={{ color: 'rgba(250,250,250,0.45)' }}>
-            {p.shortDescription}
-          </p>
-          <Link href={`/${p.slug}`} className="text-sm font-semibold w-fit" style={{ color: '#ff8040' }}>
-            Detalji →
-          </Link>
-        </div>
+      <div className="p-8 flex flex-col h-full min-h-[220px]">
+        {p.segment === 'view-ecosystem' && (
+          <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold mb-4 w-fit"
+            style={{ background: 'rgba(255,82,0,0.12)', color: '#ff8040', border: '1px solid rgba(255,82,0,0.2)' }}>
+            View Ecosystem
+          </span>
+        )}
+        <h3 className="text-xl font-semibold tracking-tight text-white mb-2">{p.name}</h3>
+        <p className="text-sm leading-relaxed mb-6 flex-1" style={{ color: 'rgba(250,250,250,0.45)' }}>
+          {p.shortDescription}
+        </p>
+        <Link href={`/${p.slug}`} className="text-sm font-semibold w-fit" style={{ color: '#ff8040' }}>
+          Detalji →
+        </Link>
       </div>
     </BorderGlow>
   );
