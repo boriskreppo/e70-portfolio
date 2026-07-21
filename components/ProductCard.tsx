@@ -31,7 +31,7 @@ export default function ProductCard({ p, animated }: { p: typeof products[0]; an
       animated={animated}
     >
       <div className="p-8 flex flex-col h-full min-h-[220px] relative overflow-hidden">
-        <div className="absolute inset-0 pointer-events-none" style={{ opacity: 0.18, zIndex: 0 }}>
+        <div className="absolute inset-0 pointer-events-none" style={{ opacity: 0.45, zIndex: 0 }}>
           <DarkVeil hueShift={VEIL_HUE[p.segment] ?? 0} speed={1.2} warpAmount={0.3} resolutionScale={0.4} />
         </div>
         {p.segment === 'view-ecosystem' && (
