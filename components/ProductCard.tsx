@@ -24,30 +24,34 @@ export default function ProductCard({ p, animated }: { p: typeof products[0]; an
       fillOpacity={0.38}
       animated={animated}
     >
-      <div className="p-8 flex flex-col h-full min-h-[220px] relative overflow-hidden">
-        <div className="absolute inset-0 pointer-events-none" style={{
-          zIndex: 0,
-          width: '100%',
-          height: '100%',
-          opacity: 0.7,
-          WebkitMaskImage: 'radial-gradient(ellipse 85% 80% at 100% 100%, black 30%, transparent 75%)',
-          maskImage: 'radial-gradient(ellipse 85% 80% at 100% 100%, black 30%, transparent 75%)',
+      <div style={{ position: 'relative', flex: 1, minHeight: '220px', overflow: 'hidden' }}>
+        {/* DarkVeil background */}
+        <div style={{
+          position: 'absolute',
+          inset: 0,
+          pointerEvents: 'none',
+          opacity: 0.75,
+          WebkitMaskImage: 'radial-gradient(ellipse 90% 85% at 100% 100%, black 25%, transparent 70%)',
+          maskImage: 'radial-gradient(ellipse 90% 85% at 100% 100%, black 25%, transparent 70%)',
         }}>
           <DarkVeil hueShift={-125} speed={1.2} warpAmount={0.3} resolutionScale={0.4} />
         </div>
-        {p.segment === 'view-ecosystem' && (
-          <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold mb-4 w-fit relative z-10"
-            style={{ background: 'rgba(255,82,0,0.12)', color: '#ff8040', border: '1px solid rgba(255,82,0,0.2)' }}>
-            View Ecosystem
-          </span>
-        )}
-        <h3 className="text-xl font-semibold tracking-tight text-white mb-2 relative z-10">{p.name}</h3>
-        <p className="text-sm leading-relaxed mb-6 flex-1 relative z-10" style={{ color: 'rgba(250,250,250,0.45)' }}>
-          {p.shortDescription}
-        </p>
-        <Link href={`/${p.slug}`} className="text-sm font-semibold w-fit relative z-10" style={{ color: '#ff8040' }}>
-          Detalji →
-        </Link>
+        {/* Content */}
+        <div className="p-8 flex flex-col h-full relative" style={{ zIndex: 1 }}>
+          {p.segment === 'view-ecosystem' && (
+            <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold mb-4 w-fit"
+              style={{ background: 'rgba(255,82,0,0.12)', color: '#ff8040', border: '1px solid rgba(255,82,0,0.2)' }}>
+              View Ecosystem
+            </span>
+          )}
+          <h3 className="text-xl font-semibold tracking-tight text-white mb-2">{p.name}</h3>
+          <p className="text-sm leading-relaxed mb-6 flex-1" style={{ color: 'rgba(250,250,250,0.45)' }}>
+            {p.shortDescription}
+          </p>
+          <Link href={`/${p.slug}`} className="text-sm font-semibold w-fit" style={{ color: '#ff8040' }}>
+            Detalji →
+          </Link>
+        </div>
       </div>
     </BorderGlow>
   );
